@@ -26,6 +26,12 @@ public class ShortUrl {
 
     private LocalDateTime createdAt;
 
+    public ShortUrl(String originalUrl, String shortCode, LocalDateTime createdAt) {
+        this.originalUrl = originalUrl;
+        this.shortCode = shortCode;
+        this.createdAt = createdAt;
+    }
+
     public long getId() {
         return id;
     }
