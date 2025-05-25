@@ -26,6 +26,10 @@ public class ShortUrl {
 
     private LocalDateTime createdAt;
 
+    public ShortUrl() {
+
+    }
+
     public ShortUrl(String originalUrl, String shortCode, LocalDateTime createdAt) {
         this.originalUrl = originalUrl;
         this.shortCode = shortCode;
