@@ -3,7 +3,9 @@ package com.example.minilinkify.service;
 import com.example.minilinkify.model.ShortUrl;
 import com.example.minilinkify.repository.UrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -47,7 +49,7 @@ public class UrlServiceImpl implements UrlService {
         if (shortUrl != null) {
             return shortUrl.getOriginalUrl();
         } else {
-            throw new RuntimeException("Short URL not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid short code");
         }
     }
 }

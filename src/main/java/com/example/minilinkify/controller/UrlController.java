@@ -1,7 +1,9 @@
 package com.example.minilinkify.controller;
 
 import com.example.minilinkify.dto.UrlRequest;
+import com.example.minilinkify.dto.UrlResponse;
 import com.example.minilinkify.service.UrlService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +17,15 @@ public class UrlController {
     }
 
     @PostMapping("/shorten")
-    public ResponseEntity<String> shortenUrl(@RequestBody UrlRequest request) {
-        return ResponseEntity.ok(urlService.shortenUrl(request.getUrl()));
+    public ResponseEntity<UrlResponse> shortenUrl(@RequestBody UrlRequest request) {
+        String shortUrl = "http://localhost:8080/api/" +  urlService.shortenUrl(request.getUrl());
+        return ResponseEntity.ok(new UrlResponse(request.getUrl(), shortUrl));
     }
 
     @GetMapping("/{shortCode}")
-    public ResponseEntity<String> getOriginalUrl(@PathVariable String shortCode) {
-        return ResponseEntity.ok(urlService.getOriginalUrl(shortCode));
+    public ResponseEntity<Void> getOriginalUrl(@PathVariable String shortCode) {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .header("Location", urlService.getOriginalUrl(shortCode))
+                .build();
     }
 }
