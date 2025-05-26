@@ -47,6 +47,8 @@ public class UrlServiceImpl implements UrlService {
     public String getOriginalUrl(String shortCode) throws RuntimeException {
         ShortUrl shortUrl = urlRepository.getShortUrlByShortCode(shortCode).orElse(null);
         if (shortUrl != null) {
+            shortUrl.setAccessCount(shortUrl.getAccessCount() + 1);
+            urlRepository.save(shortUrl);
             return shortUrl.getOriginalUrl();
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid short code");
