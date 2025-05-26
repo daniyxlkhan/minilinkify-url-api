@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service;
 public interface UrlService {
     String shortenUrl(String url);
     String getOriginalUrl(String shortCode) throws RuntimeException;
+    Integer getAccessCount(String shortCode);
 }

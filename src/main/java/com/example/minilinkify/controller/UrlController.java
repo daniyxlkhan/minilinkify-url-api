@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "api/")
+@RequestMapping(path = "shorten")
 public class UrlController {
     private final UrlService urlService;
 
@@ -17,9 +17,9 @@ public class UrlController {
         this.urlService = urlService;
     }
 
-    @PostMapping("/shorten")
+    @PostMapping("")
     public ResponseEntity<UrlResponse> shortenUrl(@RequestBody @Valid UrlRequest request) {
-        String shortUrl = "http://localhost:8080/api/" +  urlService.shortenUrl(request.getUrl());
+        String shortUrl = "http://localhost:8080/shorten/" +  urlService.shortenUrl(request.getUrl());
         return ResponseEntity.ok(new UrlResponse(request.getUrl(), shortUrl));
     }
 
@@ -30,5 +30,8 @@ public class UrlController {
                 .build();
     }
 
-
+    @GetMapping("/{shortcode}/stats")
+    public ResponseEntity<Integer> getStats(@PathVariable String shortcode) {
+        return ResponseEntity.ok(urlService.getAccessCount(shortcode));
+    }
 }
