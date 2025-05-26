@@ -1,11 +1,12 @@
 package com.example.minilinkify.model;
 
 import jakarta.persistence.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDateTime;
 
-
 @Entity
+@Table(name = "short_url")
 public class ShortUrl {
 
     @Id
@@ -25,6 +26,9 @@ public class ShortUrl {
     private String shortCode;
 
     private LocalDateTime createdAt;
+
+    @Column(nullable = false)
+    private int accessCount = 0;
 
     public ShortUrl() {
 
@@ -66,5 +70,13 @@ public class ShortUrl {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public int getAccessCount() {
+        return accessCount;
+    }
+
+    public void setAccessCount(int accessCount) {
+        this.accessCount = accessCount;
     }
 }
