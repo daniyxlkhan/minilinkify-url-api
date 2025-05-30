@@ -73,4 +73,14 @@ public class UrlServiceImpl implements UrlService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid short code");
         }
     }
+
+    @Override
+    public void deleteShortUrl(String shortCode) {
+        ShortUrl shortUrl = urlRepository.getShortUrlByShortCode(shortCode).orElse(null);
+        if (shortUrl != null) {
+            urlRepository.delete(shortUrl);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid short code");
+        }
+    }
 }

@@ -45,4 +45,10 @@ public class UrlController {
 
         return ResponseEntity.ok(stats);
     }
+
+    @DeleteMapping("/{shortcode}/delete")
+    public ResponseEntity<Void> deleteShortUrl(@PathVariable String shortcode) {
+        urlService.deleteShortUrl(shortcode);
+        return ResponseEntity.noContent().build();
+    }
 }

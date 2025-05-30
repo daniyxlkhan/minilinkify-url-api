@@ -9,4 +9,5 @@ public interface UrlService {
     String getOriginalUrl(String shortCode) throws RuntimeException;
     Integer getAccessCount(String shortCode);
     ShortUrl getShortUrlOrThrow(String shortCode);
+    void deleteShortUrl(String shortCode);
 }
