@@ -73,5 +73,4 @@ public class UrlServiceImpl implements UrlService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid short code");
         }
     }
-
 }
