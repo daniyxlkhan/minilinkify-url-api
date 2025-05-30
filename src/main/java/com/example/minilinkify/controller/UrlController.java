@@ -2,11 +2,15 @@ package com.example.minilinkify.controller;
 
 import com.example.minilinkify.dto.UrlRequest;
 import com.example.minilinkify.dto.UrlResponse;
+import com.example.minilinkify.dto.UrlStatsResponse;
+import com.example.minilinkify.model.ShortUrl;
 import com.example.minilinkify.service.UrlService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping(path = "shorten")
@@ -31,7 +35,16 @@ public class UrlController {
     }
 
     @GetMapping("/{shortcode}/stats")
-    public ResponseEntity<Integer> getStats(@PathVariable String shortcode) {
-        return ResponseEntity.ok(urlService.getAccessCount(shortcode));
+    public ResponseEntity<UrlStatsResponse> getStats(@PathVariable String shortcode) {
+        ShortUrl shortUrl= urlService.getShortUrlOrThrow(shortcode);
+
+        UrlStatsResponse stats = new UrlStatsResponse(
+                shortUrl.getShortCode(),
+                shortUrl.getOriginalUrl(),
+                shortUrl.getAccessCount(),
+                shortUrl.getCreatedAt()
+        );
+
+        return ResponseEntity.ok(stats);
     }
 }
