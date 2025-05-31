@@ -4,13 +4,40 @@
     <meta charset="UTF-8">
     <title>MiniLinkify</title>
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="url-form">
-        <label for="url-input"></label>
-        <input type="text" id="url-input" placeholder="Paste your URL..." />
-        <button type="submit">Linkify</button>
-    </form>
-    <p id="result"></p>
+    <nav id="nav_bar">
+        <h1 id="main_heading">MiniLinkify</h1>
+    </nav>
+    <section id="main_container">
+        <form id="url-form">
+            <label for="url-input" id="main_label_text">Paste the URL to be shortened<br></label>
+            <div>
+                <input type="text" id="url-input" placeholder="Enter the link here" id="main_input"/>
+                <button type="submit" id="main_button">Shorten URL</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </section>
+    <section id="about_container">
+        <h2 id="about_heading">Quick and Easy Link Shortening</h2>
+        <p>
+            MiniLinkify helps you turn long, messy URLs into short, shareable links in seconds.
+            Whether it's from
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>,
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>,
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>,
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>,
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>,
+            <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer">WhatsApp</a>,
+            <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>, blogs, or websites.
+        </p>
+        <p>
+            Simply paste your original link and hit the "Shorten URL" button. You'll instantly get a compact version you can post anywhere from social media to emails and chat. You can even keep track of how many times your short link gets clicked.
+        </p>
+    </section>
+
+
 </body>
 </html>
