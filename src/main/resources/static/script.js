@@ -1,9 +1,11 @@
 const inputForm = document.querySelector('#url-form');
-const result = document.querySelector('#result');
+const resultInput = document.querySelector('#result');
+const copyIcon = document.getElementById("copy_icon");
 
 inputForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const inputUrl = document.querySelector('#url-input').value;
+    event.preventDefault();
+    const inputUrl = document.querySelector('#url-input').value;
+
     fetch("http://localhost:8080/shorten", {
         method: "POST",
         headers: {
@@ -13,9 +15,20 @@ inputForm.addEventListener('submit', (event) => {
     })
         .then(response => response.json())
         .then(data => {
-            result.innerHTML = `Shortened URL: <a href="${data.shortUrl}" target="_blank">${data.shortUrl}</a>`;
+            resultInput.value = data.shortUrl;
+            copyIcon.style.display = "inline";
         })
         .catch(err => {
             console.log(err);
         });
+});
+
+copyIcon.addEventListener("click", () => {
+    if (resultInput.value) {
+        navigator.clipboard.writeText(resultInput.value).then(() => {
+            console.log("Copy successful!");
+        }).catch(err => {
+            console.error("Copy failed:", err);
+        });
+    }
 });

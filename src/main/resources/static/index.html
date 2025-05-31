@@ -15,11 +15,19 @@
         <form id="url-form">
             <label for="url-input" id="main_label_text">Paste the URL to be shortened<br></label>
             <div id="main_input_container">
-                <input type="text" id="url-input" placeholder="Enter the link here"/>
+                <input type="text" id="url-input" placeholder="Enter the link here" required/>
                 <button type="submit" id="main_button">Shorten URL</button>
             </div>
         </form>
-        <p id="result"></p>
+
+        <div id="result_container">
+            <input type="text" id="result" readonly/>
+            <svg id="copy_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24" title="Copy to clipboard" style="cursor: pointer;">
+                <path d="M16 1H4C2.897 1 2 1.897 2 3v14h2V3h12V1zm3 4H8c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h11c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+        </div>
+
+
     </section>
     <section id="about_container">
         <div id="about_text">

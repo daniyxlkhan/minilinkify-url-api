@@ -5,13 +5,12 @@
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 100vh;
+    align-items: center;
     background-color: #0f0f0f;
     color: #fff;
     font-family: 'Roboto', sans-serif;
+    padding-top: 8rem;
 }
 
 a {
@@ -28,14 +27,18 @@ a:hover {
 #nav_bar {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    margin-top: 2rem;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
 #main_heading {
     font-size: 4rem;
+}
+
+#main_container,
+#about_container {
+    max-width: 960px;
 }
 
 /* -------------------- MAIN SECTION -------------------- */
@@ -46,7 +49,8 @@ a:hover {
     align-items: center;
     flex-direction: column;
     width: 80%;
-    margin-bottom: 4rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 #url-form {
@@ -110,8 +114,36 @@ a:hover {
     transform: scale(0.98);
 }
 
+#result_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+}
+
 #result {
-    height: 20px;
+    background-color: #0f0f0f;
+    color: #fff;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    width: 45%;
+
+}
+
+#copy_icon {
+    display: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#copy_icon:hover {
+    transform: scale(1.1);
+    fill: #ffcc00;
 }
 
 /* -------------------- ABOUT SECTION -------------------- */
@@ -162,9 +194,11 @@ footer {
     transform: rotate(360deg) scale(1.2);
 }
 
+/* -------------------------------- RESPONSIVE -------------------------------- */
+
 @media (max-width: 670px) {
     #main_heading {
-        font-size: 2.5rem;
+        font-size: 3.0rem;
     }
 
     #main_label_text {
