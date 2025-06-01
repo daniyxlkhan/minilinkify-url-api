@@ -10,10 +10,11 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
-@RequestMapping(path = "shorten")
+@RequestMapping("")
 public class UrlController {
     private final UrlService urlService;
 
@@ -21,10 +22,12 @@ public class UrlController {
         this.urlService = urlService;
     }
 
-    @PostMapping("")
+    @PostMapping("/shorten")
     public ResponseEntity<UrlResponse> shortenUrl(@RequestBody @Valid UrlRequest request, HttpServletRequest httpRequest) {
-        String baseUrl = httpRequest.getRequestURL().toString()
-                .replace(httpRequest.getRequestURI(), httpRequest.getContextPath());
+        String baseUrl = ServletUriComponentsBuilder.fromRequestUri(httpRequest)
+                .replacePath(null)
+                .build()
+                .toUriString();
         String shortCode = urlService.shortenUrl(request.getUrl());
         String shortUrl = baseUrl + "/" + shortCode;
 
@@ -33,7 +36,7 @@ public class UrlController {
 //      return ResponseEntity.status(HttpStatus.CREATED).body(new UrlResponse(request.getUrl(), shortUrl));
     }
 
-    @GetMapping("/{shortCode}")
+    @GetMapping("/{shortCode:[a-zA-Z0-9]+}")
     public ResponseEntity<Void> getOriginalUrl(@PathVariable String shortCode) {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .header("Location", urlService.getOriginalUrl(shortCode))
