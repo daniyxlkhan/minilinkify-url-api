@@ -6,7 +6,7 @@ inputForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const inputUrl = document.querySelector('#url-input').value;
 
-    fetch("http://localhost:8080/shorten", {
+    fetch("/shorten", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

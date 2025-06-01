@@ -5,6 +5,7 @@ import com.example.minilinkify.dto.UrlResponse;
 import com.example.minilinkify.dto.UrlStatsResponse;
 import com.example.minilinkify.model.ShortUrl;
 import com.example.minilinkify.service.UrlService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,15 @@ public class UrlController {
     }
 
     @PostMapping("")
-    public ResponseEntity<UrlResponse> shortenUrl(@RequestBody @Valid UrlRequest request) {
-        String shortUrl = "http://localhost:8080/shorten/" +  urlService.shortenUrl(request.getUrl());
+    public ResponseEntity<UrlResponse> shortenUrl(@RequestBody @Valid UrlRequest request, HttpServletRequest httpRequest) {
+        String baseUrl = httpRequest.getRequestURL().toString()
+                .replace(httpRequest.getRequestURI(), httpRequest.getContextPath());
+        String shortCode = urlService.shortenUrl(request.getUrl());
+        String shortUrl = baseUrl + "/" + shortCode;
+
         return ResponseEntity.status(HttpStatus.CREATED).body(new UrlResponse(request.getUrl(), shortUrl));
+//      String shortUrl = "http://localhost:8080/shorten/" +  urlService.shortenUrl(request.getUrl());
+//      return ResponseEntity.status(HttpStatus.CREATED).body(new UrlResponse(request.getUrl(), shortUrl));
     }
 
     @GetMapping("/{shortCode}")
