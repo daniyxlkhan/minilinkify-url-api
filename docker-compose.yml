@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/minilinkify
+      SPRING_DATASOURCE_USERNAME: daniyal
+      SPRING_DATASOURCE_PASSWORD: love4all
+    networks:
+      - minilinkify-network
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: minilinkify
+      POSTGRES_USER: daniyal
+      POSTGRES_PASSWORD: love4all
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - minilinkify-network
+
+volumes:
+  pgdata:
+
+networks:
+  minilinkify-network:
