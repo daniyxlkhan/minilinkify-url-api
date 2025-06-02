@@ -2,7 +2,7 @@
 
 Minilinkify is a lightweight, production-ready URL shortening service built using **Spring Boot**, **PostgreSQL**, and **Docker**. It’s deployed on an **AWS EC2** instance and allows users to shorten URLs and redirect with a custom code.
 
-**Live link**: [Demo](http://52.15.154.112:8080/)
+**Live link**: [https://minilinkify.tech/](https://minilinkify.tech/)
 ---
 
 ## 🚀 Features
