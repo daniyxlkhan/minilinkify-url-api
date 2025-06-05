@@ -4,7 +4,7 @@ Minilinkify is a lightweight, production-ready URL shortening service built usin
 
 **Live link**: [https://minilinkify.tech/](https://minilinkify.tech/)
 ---
-<!-- https://roadmap.sh/projects/url-shortening-service -->
+
 ## 🚀 Features
 
 - Shorten any valid URL
