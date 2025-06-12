@@ -6,7 +6,7 @@ inputForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const inputUrl = document.querySelector('#url-input').value;
 
-    fetch("/shorten", {
+    fetch("https://minilinkify.tech/shorten", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
