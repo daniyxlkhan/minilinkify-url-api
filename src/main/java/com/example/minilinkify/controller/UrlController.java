@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@CrossOrigin(origins = { "http://localhost:63342", "https://minilinkify.tech" })
+@CrossOrigin(origins = { "http://localhost:63342", "https://minilinkify.tech", "https://www.minilinkify.tech"})
 @RestController
 @RequestMapping("")
 public class UrlController {
