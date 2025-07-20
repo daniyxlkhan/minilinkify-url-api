@@ -4,12 +4,6 @@ Minilinkify is a lightweight, production-ready URL shortening service built usin
 
 **Live link**: [https://minilinkify.tech/](https://minilinkify.tech/)
 
-## 🚀 Quick Deploy to Render
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
-
-This application is ready to deploy to Render with one click! See [RENDER_DEPLOYMENT.md](./RENDER_DEPLOYMENT.md) for detailed instructions.
-
 ---
 
 ## 🚀 Features
