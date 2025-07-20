@@ -1,5 +1,5 @@
 # Minilinkify URL Shortener
-![Minilinkify Screenshot](src/main/resources/static/images/preview.png)
+![Minilinkify Screenshot](src/main/resources/static/images/preview-image.png)
 
 Minilinkify is a lightweight, production-ready URL shortening service built using **Spring Boot**, **PostgreSQL**, and **Docker**. Originally deployed on **AWS EC2**, it's currently running on **Google Cloud Run** due to limited EC2 credits.
 
