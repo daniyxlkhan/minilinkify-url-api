@@ -10,7 +10,14 @@ RUN mvn dependency:go-offline -B
 
 # Copy source code and build
 COPY src ./src
-RUN mvn clean package -DskipTests
+COPY .mvn ./.mvn
+COPY mvnw ./mvnw
+COPY mvnw.cmd ./mvnw.cmd
+RUN chmod +x ./mvnw
+RUN ./mvnw clean package -DskipTests
+
+# List the target directory to see what was built
+RUN ls -la target/
 
 # Runtime stage
 FROM eclipse-temurin:17-jre-alpine
@@ -21,8 +28,8 @@ RUN apk add --no-cache curl
 # Set working directory
 WORKDIR /app
 
-# Copy the jar from build stage
-COPY --from=build /app/target/*.jar app.jar
+# Copy the specific jar file from build stage
+COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Create non-root user
 RUN addgroup -g 1001 -S spring && \
