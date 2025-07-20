@@ -1,14 +1,8 @@
 # Minilinkify URL Shortener
 
-Minilinkify is a lightweight, production-ready URL shortening service built using **Spring Boot**, **PostgreSQL**, and **Docker**. It's deployed on an **AWS EC2** instance and allows users to shorten URLs and redirect with a custom code.
+Minilinkify is a lightweight, production-ready URL shortening service built using **Spring Boot**, **PostgreSQL**, and **Docker**. Originally deployed on **AWS EC2**, it's currently running on **Google Cloud Run** due to limited EC2 credits.
 
 **Live link**: [https://minilinkify.tech/](https://minilinkify.tech/)
-
-## 🚀 Quick Deploy to Render
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
-
-This application is ready to deploy to Render with one click! See [RENDER_DEPLOYMENT.md](./RENDER_DEPLOYMENT.md) for detailed instructions.
 
 ---
 
