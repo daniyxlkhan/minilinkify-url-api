@@ -1,7 +1,6 @@
 services:
   - type: web
     name: minilinkify-api
-    runtime: java
     plan: free
     buildCommand: ./build.sh
     startCommand: ./start.sh
