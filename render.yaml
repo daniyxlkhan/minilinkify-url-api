@@ -1,7 +1,7 @@
 services:
   - type: web
     name: minilinkify-api
-    runtime: docker
+    env: java
     plan: free
     buildCommand: ./build.sh
     startCommand: ./start.sh
