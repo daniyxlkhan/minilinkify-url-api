@@ -1,50 +1,14 @@
-# Multi-stage build for Google Cloud Run
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# Simple Dockerfile for Cloud Run
+FROM openjdk:17-jdk-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy pom.xml and download dependencies
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Copy the pre-built jar file
+COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
 
-# Copy source code and build
-COPY src ./src
-COPY .mvn ./.mvn
-COPY mvnw ./mvnw
-COPY mvnw.cmd ./mvnw.cmd
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
-
-# List the target directory to see what was built
-RUN ls -la target/
-
-# Runtime stage
-FROM eclipse-temurin:17-jre-alpine
-
-# Install curl for health checks
-RUN apk add --no-cache curl
-
-# Set working directory
-WORKDIR /app
-
-# Copy the specific jar file from build stage
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
-
-# Create non-root user
-RUN addgroup -g 1001 -S spring && \
-    adduser -S spring -u 1001 -G spring
-
-# Change ownership of the app directory
-RUN chown -R spring:spring /app
-USER spring:spring
-
-# Expose port
+# Expose port 8080
 EXPOSE 8080
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:8080/actuator/health || exit 1
-
 # Run the application
-ENTRYPOINT ["java", "-Dserver.port=${PORT:-8080}", "-Dserver.address=0.0.0.0", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
