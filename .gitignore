@@ -1,2 +1,17 @@
 # Maven
 target/
+
+# IDE
+.idea/
+.vscode/
+*.iws
+*.iml
+*.ipr
+
+# Maven Wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# OS
+.DS_Store
