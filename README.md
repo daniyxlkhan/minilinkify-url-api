@@ -7,7 +7,7 @@ Minilinkify is a lightweight, production-ready URL shortening service built usin
 
 ---
 
-## 🚀 Features
+## Features
 
 - Shorten any valid URL
 - Redirect users via `/{shortCode}`
@@ -19,7 +19,7 @@ Minilinkify is a lightweight, production-ready URL shortening service built usin
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 **Backend**:
 - Spring Boot 3.5
@@ -39,7 +39,7 @@ Minilinkify is a lightweight, production-ready URL shortening service built usin
 
 ---
 
-## 🧑‍💻 Local Setup
+## Local Setup
 
 ### Requirements
 
