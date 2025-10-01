@@ -5,6 +5,8 @@ Minilinkify is a lightweight, production-ready URL shortening service built usin
 
 **Live link**: [https://minilinkify.tech/](https://minilinkify.tech/)
 
+(might take a bit to load because google run shuts it down due to inactivity)
+
 ---
 
 ## Features
